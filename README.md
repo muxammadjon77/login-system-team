@@ -186,8 +186,8 @@ A user interface for new users to sign up for an account using their email and p
 If a user already has an account, they can click:
 ```html
 <a href="index.html">Already have an account? Login</a>
-## 🧠 Registration Logic — `register.js`
 ```
+## 🧠 Registration Logic — `register.js`
 The `register.js` file handles the logic behind user registration. It listens for a button click, validates the form, and calls a custom `register()` function from `auth.js`, which communicates with Firebase Authentication.
 
 ### 🔗 Connected Files:
