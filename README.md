@@ -123,10 +123,10 @@ This is the main entry point for the authentication system, handling user login,
 ## Firebase Integration
 
 ### Authentication Methods
-`javascript`
+```javascript
 import { login, register, resetPassword, logout } from './auth.js';
 import { onAuthStateChanged } from "firebase/auth";
-
+```
 # Firebase Authentication Setup — `firebase-config.js`
 
 This module connects your app to **Firebase Authentication** using the Firebase JS SDK. It initializes the Firebase app with your project settings and exports the `auth` instance for use across your application.
@@ -139,7 +139,7 @@ This module connects your app to **Firebase Authentication** using the Firebase 
 - `getAuth` — Retrieves the Firebase Authentication service.
 
 ### 🔐 Firebase Configuration:
-`js`
+```js
 const firebaseConfig = {
   apiKey: "AIzaSyDdSvxjJuTpfdb5jnDozBIj4RpSyRUurZY",
   authDomain: "login-bc50e.firebaseapp.com",
@@ -148,7 +148,7 @@ const firebaseConfig = {
   messagingSenderId: "447546620644",
   appId: "1:447546620644:web:4cf8793caf4dccc8640af1"
 };
-
+```
 # 📝 Register User Module — `register.html`
 
 This file is a registration page built using **HTML**, **Bootstrap**, and **JavaScript modules**. It allows users to create a new account by entering their email and password, and is connected to **Firebase Authentication** for user registration.
@@ -184,10 +184,10 @@ A user interface for new users to sign up for an account using their email and p
 
 ### 🔗 Navigation:
 If a user already has an account, they can click:
-`html`
+```html
 <a href="index.html">Already have an account? Login</a>
 ## 🧠 Registration Logic — `register.js`
-
+```
 The `register.js` file handles the logic behind user registration. It listens for a button click, validates the form, and calls a custom `register()` function from `auth.js`, which communicates with Firebase Authentication.
 
 ### 🔗 Connected Files:
@@ -202,43 +202,52 @@ The `register.js` file handles the logic behind user registration. It listens fo
 #### 1. **Input Selection**
 Grabs the necessary input elements from the DOM:
 
-`js`
+```js
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 const confirmPassword = document.getElementById('confirm-password');
 const registerBtn = document.getElementById('register-btn');
-
+```
 #### 2 **Click Event Listener**
 Listens for the "Register" button click:
+```
 registerBtn.addEventListener('click', async () => {
   // logic inside
 });
-
+```
 #### 3 **Password Matching Validation**
 Ensures that the password and confirmation match before proceeding:
+```
 if (password.value !== confirmPassword.value) {
   alert("Passwords do not match.");
   return;
 }
+```
 
 #### 4 **Call to register() Function**
 Calls the Firebase wrapper function from auth.js to register the user:
+```
 const userCredential = await register(email.value, password.value);
+```
 
 #### 5 **Handling Registration Result**
 Shows success or failure messages and redirects if successful:
+```
 if (userCredential) {
   alert("Registration successful! You can now log in.");
   window.location.href = "index.html";
 } else {
   alert("Registration failed. Please try again.");
 }
+```
 
 #### 6 **Error Handling**
 Catches and displays any errors that occur during the registration process:
+```
 } catch (err) {
   alert(err.message);
 }
+```
 
 ## 🔐 Forgot Password Integration — `forgot-password.html`
 
