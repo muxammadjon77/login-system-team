@@ -1,3 +1,43 @@
+# `index.html` - Login Page UI
+
+This file contains the structure and layout of the login page for the Firebase authentication system.
+
+## Features
+
+- **Responsive Design**: Built using Bootstrap to make the page mobile-friendly and easy to use on various screen sizes.
+- **User Input Fields**: Provides input fields for the user to enter their email and password.
+- **Login & Register Buttons**: Includes buttons for logging in and redirecting to the registration page.
+- **Forgot Password Link**: Provides a link for users who forgot their password, directing them to the `forgot-password.html` page.
+- **Welcome Message**: After a successful login, the user's email is displayed, and a logout button appears.
+  
+## HTML Structure
+
+- **Head Section**:
+  - Includes meta tags for charset and viewport to ensure proper scaling on different devices.
+  - The title of the page is set to "Firebase Auth".
+  - The Bootstrap CSS framework is linked to ensure the page has a clean and responsive layout.
+
+- **Body Section**:
+  - **`#user-section`**: This section is initially hidden and will be displayed if the user successfully logs in. It shows the user's email and a logout button.
+  - **`#auth-forms`**: This section contains the login form, which includes:
+    - An input for the user's email.
+    - An input for the user's password.
+    - A link to the forgot password page (`forgot-password.html`).
+    - Two buttons: one for logging in and another for redirecting to the registration page.
+
+## External Dependencies
+
+- **Bootstrap**: This page uses Bootstrap 5 for styling and responsive design.
+  - Bootstrap is linked via a CDN to minimize the need for local installation and ensure the latest version is always used.
+
+## JavaScript
+
+- The `main.js` script is imported to handle the interactivity of the page, including the login and registration actions.
+
+---
+
+This `index.html` file provides the foundational structure for user authentication in the Firebase system. It ensures that users can log in, register, or recover their passwords in a user-friendly manner.
+
 # `auth.js` - Firebase Authentication Logic
 
 This file contains the Firebase authentication functions used to log in, register, reset passwords, and log out users. It interacts with Firebase Authentication and provides these functionalities for the application.
