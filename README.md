@@ -1,4 +1,4 @@
-# `index.html` - Login Page UI
+# Login Page UI - `index.html`
 
 This file contains the structure and layout of the login page for the Firebase authentication system.
 
@@ -38,7 +38,7 @@ This file contains the structure and layout of the login page for the Firebase a
 
 This `index.html` file provides the foundational structure for user authentication in the Firebase system. It ensures that users can log in, register, or recover their passwords in a user-friendly manner.
 
-# `auth.js` - Firebase Authentication Logic
+# Firebase Authentication Logic - `auth.js`
 
 This file contains the Firebase authentication functions used to log in, register, reset passwords, and log out users. It interacts with Firebase Authentication and provides these functionalities for the application.
 
@@ -89,7 +89,7 @@ This file is built using Firebase Authentication SDK. It provides four core func
 
 This `auth.js` file encapsulates the core authentication logic for the Firebase Auth system. It simplifies the process of integrating user authentication into the application by providing reusable functions that interact with Firebase Authentication.
 
-# main.js - Backend Validation for Login System
+#  Backend Validation for Login System - `main.js`
 
 ## File Overview
 This is the main entry point for the authentication system, handling user login, registration, password reset, and logout functionality with Firebase backend validation.
@@ -173,8 +173,6 @@ A user interface for new users to sign up for an account using their email and p
   - A **Register** button
   - Link to login page
 
-### 🖼️ UI Screenshot (optional):
-> *(You can add a screenshot here if needed)*
 
 ### 📂 File Structure:
 
@@ -186,5 +184,133 @@ A user interface for new users to sign up for an account using their email and p
 
 ### 🔗 Navigation:
 If a user already has an account, they can click:
-```html
+`html`
 <a href="index.html">Already have an account? Login</a>
+## 🧠 Registration Logic — `register.js`
+
+The `register.js` file handles the logic behind user registration. It listens for a button click, validates the form, and calls a custom `register()` function from `auth.js`, which communicates with Firebase Authentication.
+
+### 🔗 Connected Files:
+- `register.html` — The UI for registration.
+- `auth.js` — Contains the actual `register(email, password)` function that wraps Firebase’s API.
+- `firebase-config.js` — Firebase initialization settings (imported in `auth.js`).
+
+---
+
+### 📋 Main Functionalities:
+
+#### 1. **Input Selection**
+Grabs the necessary input elements from the DOM:
+
+`js`
+const email = document.getElementById('email');
+const password = document.getElementById('password');
+const confirmPassword = document.getElementById('confirm-password');
+const registerBtn = document.getElementById('register-btn');
+
+#### 2 **Click Event Listener**
+Listens for the "Register" button click:
+registerBtn.addEventListener('click', async () => {
+  // logic inside
+});
+
+#### 3 **Password Matching Validation**
+Ensures that the password and confirmation match before proceeding:
+if (password.value !== confirmPassword.value) {
+  alert("Passwords do not match.");
+  return;
+}
+
+#### 4 **Call to register() Function**
+Calls the Firebase wrapper function from auth.js to register the user:
+const userCredential = await register(email.value, password.value);
+
+#### 5 **Handling Registration Result**
+Shows success or failure messages and redirects if successful:
+if (userCredential) {
+  alert("Registration successful! You can now log in.");
+  window.location.href = "index.html";
+} else {
+  alert("Registration failed. Please try again.");
+}
+
+#### 6 **Error Handling**
+Catches and displays any errors that occur during the registration process:
+} catch (err) {
+  alert(err.message);
+}
+
+## 🔐 Forgot Password Integration — `forgot-password.html`
+
+The `forgot-password.html` file provides a simple and user-friendly interface that allows users to reset their password if they forget it. It collects the user’s email and sends a password reset link using Firebase Authentication.
+
+---
+
+### 📁 File: `forgot-password.html`
+
+This file creates the frontend UI for requesting a password reset link.
+
+---
+
+### 🧩 Key Features:
+
+#### ✅ Responsive Design
+Uses Bootstrap 5 for a clean, responsive design that works well across devices.
+
+#### 🔧 Input Field
+```html
+<input type="email" id="email" class="form-control" placeholder="Enter your email" />
+```
+
+#### 🔘 Reset Button
+```
+<button id="reset-password-btn" class="btn btn-warning">Send Reset Link</button>
+```
+
+#### 🔄 Navigation
+```
+<a href="index.html">Back to Login</a>
+```
+
+#### 🔌 JavaScript Integration
+```
+<script type="module" src="forgot-password.js"></script>
+```
+
+## 🔧 Forgot Password Logic — `forgot-password.js`
+
+The `forgot-password.js` file manages the backend logic for the forgot password feature. It listens for the reset button click, takes the user’s email, and calls a custom `resetPassword()` function from `auth.js`, which communicates with Firebase Authentication to send a password reset link.
+
+---
+
+### 🔗 Connected Files:
+- `forgot-password.html` — The UI page where users enter their email to request a password reset.
+- `auth.js` — Contains the `resetPassword(email)` function, which wraps Firebase’s `sendPasswordResetEmail()` method.
+- `firebase-config.js` — Firebase configuration used in the auth module.
+
+---
+
+### 📋 Main Functionalities:
+
+#### 1 **Get Input Elements**
+```js
+const email = document.getElementById('email');
+const resetBtn = document.getElementById('reset-password-btn');
+```
+
+#### 2 **Event Listener for Reset**
+```
+resetBtn.addEventListener('click', async () => {
+  // logic inside
+});
+```
+
+#### 3 **Calling Firebase Reset Logic**
+```
+await resetPassword(email.value);
+```
+
+#### 4 **Success Feedback**
+```
+alert("Password reset link sent to your email.");
+```
