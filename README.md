@@ -123,6 +123,28 @@ This is the main entry point for the authentication system, handling user login,
 ## Firebase Integration
 
 ### Authentication Methods
-```javascript
+`javascript`
 import { login, register, resetPassword, logout } from './auth.js';
 import { onAuthStateChanged } from "firebase/auth";
+
+# Firebase Authentication Setup — `firebase-config.js`
+
+This module connects your app to **Firebase Authentication** using the Firebase JS SDK. It initializes the Firebase app with your project settings and exports the `auth` instance for use across your application.
+
+## 📁 File: `firebase-config.js`
+
+### 🔧 Technologies Used:
+- **Firebase JS SDK** (via CDN)
+- `initializeApp` — Initializes the Firebase app.
+- `getAuth` — Retrieves the Firebase Authentication service.
+
+### 🔐 Firebase Configuration:
+`js`
+const firebaseConfig = {
+  apiKey: "AIzaSyDdSvxjJuTpfdb5jnDozBIj4RpSyRUurZY",
+  authDomain: "login-bc50e.firebaseapp.com",
+  projectId: "login-bc50e",
+  storageBucket: "login-bc50e.firebasestorage.app",
+  messagingSenderId: "447546620644",
+  appId: "1:447546620644:web:4cf8793caf4dccc8640af1"
+};
