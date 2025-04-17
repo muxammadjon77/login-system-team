@@ -210,14 +210,14 @@ const registerBtn = document.getElementById('register-btn');
 ```
 #### 2 **Click Event Listener**
 Listens for the "Register" button click:
-```
+```js
 registerBtn.addEventListener('click', async () => {
   // logic inside
 });
 ```
 #### 3 **Password Matching Validation**
 Ensures that the password and confirmation match before proceeding:
-```
+```js
 if (password.value !== confirmPassword.value) {
   alert("Passwords do not match.");
   return;
@@ -226,13 +226,13 @@ if (password.value !== confirmPassword.value) {
 
 #### 4 **Call to register() Function**
 Calls the Firebase wrapper function from auth.js to register the user:
-```
+```js
 const userCredential = await register(email.value, password.value);
 ```
 
 #### 5 **Handling Registration Result**
 Shows success or failure messages and redirects if successful:
-```
+```js
 if (userCredential) {
   alert("Registration successful! You can now log in.");
   window.location.href = "index.html";
@@ -243,7 +243,7 @@ if (userCredential) {
 
 #### 6 **Error Handling**
 Catches and displays any errors that occur during the registration process:
-```
+```js
 } catch (err) {
   alert(err.message);
 }
@@ -273,19 +273,19 @@ Uses Bootstrap 5 for a clean, responsive design that works well across devices.
 Collects the email address from the user for password reset.
 
 #### 🔘 Reset Button
-```
+```html
 <button id="reset-password-btn" class="btn btn-warning">Send Reset Link</button>
 ```
 Triggers the reset password process.
 
 #### 🔄 Navigation
-```
+```html
 <a href="index.html">Back to Login</a>
 ```
 Provides an easy way for users to return to the login page.
 
 #### 🔌 JavaScript Integration
-```
+```html
 <script type="module" src="forgot-password.js"></script>
 ```
 Connects this page to the backend logic in forgot-password.js, which handles sending the reset email via Firebase.
