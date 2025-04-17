@@ -261,21 +261,25 @@ Uses Bootstrap 5 for a clean, responsive design that works well across devices.
 ```html
 <input type="email" id="email" class="form-control" placeholder="Enter your email" />
 ```
+Collects the email address from the user for password reset.
 
 #### 🔘 Reset Button
 ```
 <button id="reset-password-btn" class="btn btn-warning">Send Reset Link</button>
 ```
+Triggers the reset password process.
 
 #### 🔄 Navigation
 ```
 <a href="index.html">Back to Login</a>
 ```
+Provides an easy way for users to return to the login page.
 
 #### 🔌 JavaScript Integration
 ```
 <script type="module" src="forgot-password.js"></script>
 ```
+Connects this page to the backend logic in forgot-password.js, which handles sending the reset email via Firebase.
 
 ## 🔧 Forgot Password Logic — `forgot-password.js`
 
@@ -297,6 +301,7 @@ The `forgot-password.js` file manages the backend logic for the forgot password 
 const email = document.getElementById('email');
 const resetBtn = document.getElementById('reset-password-btn');
 ```
+Grabs the email input and reset button from the DOM.
 
 #### 2 **Event Listener for Reset**
 ```
@@ -304,13 +309,24 @@ resetBtn.addEventListener('click', async () => {
   // logic inside
 });
 ```
+Listens for a click on the "Send Reset Link" button.
 
 #### 3 **Calling Firebase Reset Logic**
 ```
 await resetPassword(email.value);
 ```
+Calls the custom wrapper function which sends a password reset email using Firebase Authentication.
 
 #### 4 **Success Feedback**
 ```
 alert("Password reset link sent to your email.");
 ```
+Informs the user that the reset link has been sent.
+
+#### 5 **Error Handling**
+```
+catch (err) {
+  alert(err.message);
+}
+```
+Catches and displays any errors, such as an invalid or non-existent email.
