@@ -148,3 +148,43 @@ const firebaseConfig = {
   messagingSenderId: "447546620644",
   appId: "1:447546620644:web:4cf8793caf4dccc8640af1"
 };
+
+# 📝 Register User Module — `register.html`
+
+This file is a registration page built using **HTML**, **Bootstrap**, and **JavaScript modules**. It allows users to create a new account by entering their email and password, and is connected to **Firebase Authentication** for user registration.
+
+## 📁 File: `register.html`
+
+### 📌 Purpose:
+A user interface for new users to sign up for an account using their email and password.
+
+### 🧰 Technologies Used:
+- **HTML5** — For structuring the page.
+- **Bootstrap 5** — For responsive styling and layout.
+- **CSS** — External stylesheet `style.css` for custom styles.
+- **JavaScript (ES Modules)** — Connected through `register.js`.
+- **Firebase Authentication** — Handles the registration logic in the backend.
+
+### 📐 Layout Overview:
+- A simple centered registration card with:
+  - **Email** input
+  - **Password** input
+  - **Confirm Password** input
+  - A **Register** button
+  - Link to login page
+
+### 🖼️ UI Screenshot (optional):
+> *(You can add a screenshot here if needed)*
+
+### 📂 File Structure:
+
+### ⚙️ Functionality (via `register.js`):
+- Collects user input for email and password.
+- Validates that passwords match.
+- Registers the user using Firebase Authentication.
+- Displays error messages (in `register.js`) if input is invalid.
+
+### 🔗 Navigation:
+If a user already has an account, they can click:
+```html
+<a href="index.html">Already have an account? Login</a>
