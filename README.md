@@ -313,7 +313,7 @@ const resetBtn = document.getElementById('reset-password-btn');
 Grabs the email input and reset button from the DOM.
 
 #### 2 **Event Listener for Reset**
-```
+```js
 resetBtn.addEventListener('click', async () => {
   // logic inside
 });
@@ -321,19 +321,19 @@ resetBtn.addEventListener('click', async () => {
 Listens for a click on the "Send Reset Link" button.
 
 #### 3 **Calling Firebase Reset Logic**
-```
+```js
 await resetPassword(email.value);
 ```
 Calls the custom wrapper function which sends a password reset email using Firebase Authentication.
 
 #### 4 **Success Feedback**
-```
+```js
 alert("Password reset link sent to your email.");
 ```
 Informs the user that the reset link has been sent.
 
 #### 5 **Error Handling**
-```
+```js
 catch (err) {
   alert(err.message);
 }
